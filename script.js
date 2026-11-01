@@ -115,6 +115,7 @@ function shuffle(array) {
 }
 
 async function startBoot() {
+        console.log("STARTBOOT EXECUTADO");
 
     answersDiv.innerHTML = "";
 
