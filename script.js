@@ -114,7 +114,7 @@ function shuffle(array) {
     return array;
 }
 
-async function startBoot() {
+{
         console.log("STARTBOOT EXECUTADO");
 
     answersDiv.innerHTML = "";
@@ -555,5 +555,4 @@ function createNextButton(text, callback){
     answersDiv.appendChild(button);
 }
 
-console.log("FIM DO ARQUIVO");
-startBoot();
+startBoot()
