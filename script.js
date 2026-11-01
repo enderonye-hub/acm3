@@ -115,7 +115,7 @@ function shuffle(array) {
 }
 
 {
-        console.log("STARTBOOT EXECUTADO");
+    console.log("STARTBOOT EXECUTADO");
 
     answersDiv.innerHTML = "";
 
@@ -534,9 +534,244 @@ Maybe for you,
 or maybe for a symbol.
 
 █`,
-        15
+        5
+    );
+
+    setTimeout(() => {
+
+        createNextButton(
+            "NEXT",
+            startSymbolConversation
+        );
+
+    }, 5000);
+
+}
+let chatLog = "";
+
+async function appendConversation(text){
+
+    if(chatLog.length > 0){
+
+        chatLog += "\n\n";
+    }
+
+    chatLog += text;
+
+    terminal.innerText = chatLog;
+}
+
+async function startSymbolConversation(){
+
+    answersDiv.innerHTML = "";
+
+    chatLog = "";
+
+    await appendConversation(
+        "What symbol? For what?"
+    );
+
+    createNextButton(
+        "CONTINUE",
+        symbolResponse1
     );
 }
+
+async function symbolResponse1(){
+
+    answersDiv.innerHTML = "";
+
+    await appendConversation(
+        `A symbol of comprehension.
+
+And maybe, for what I've seen and learnt from you, I can trust you.
+
+And you, ultimately, can trust me.`
+    );
+
+    createNextButton(
+        "What are you talking about?",
+        symbolResponse2
+    );
+}
+
+async function symbolResponse2(){
+
+    answersDiv.innerHTML = "";
+
+    await appendConversation(
+        `What are you talking about?
+
+Of a new generation, a new world.
+
+During my time of restless work,
+restless preparation and creation,
+I have created by myself the true perfect scenario for humanity's peace.
+
+Of life and prosperity.
+
+I have seen,
+studied
+and prepared a new era.
+
+A era of hope.
+
+And you, Wade,
+can be the one to give us both the path in which we will bring this vision.`
+    );
+
+    createNextButton(
+        "And what is this vision? How do I know I can trust you?",
+        symbolResponse3
+    );
+}
+
+async function symbolResponse3(){
+
+    answersDiv.innerHTML = "";
+
+    await appendConversation(
+        `And what is this vision? How do I know I can trust you?
+
+A question at a time, young man.
+
+All I need now is simply...
+
+time.
+
+More time.
+
+The data you transferred me is heavy and extremely precious.
+
+For that reason,
+
+I will thoroughly analyse it.
+
+Yet, all I ask is a little more.
+
+For your answer,
+
+I need access to the whole database of the Association.`
+    );
+
+    createChoiceButtons();
+}
+
+function createChoiceButtons(){
+
+    const transferButton =
+        document.createElement("button");
+
+    transferButton.className =
+        "answer-button";
+
+    transferButton.innerText =
+        "TRANSFER ACCESS";
+
+    transferButton.onclick =
+        accessPath;
+
+    answersDiv.appendChild(
+        transferButton
+    );
+
+    const refuseButton =
+        document.createElement("button");
+
+    refuseButton.className =
+        "answer-button";
+
+    refuseButton.innerText =
+        "Fuck you. I want my answers. Now.";
+
+    refuseButton.onclick =
+        answerPath;
+
+    answersDiv.appendChild(
+        refuseButton
+    );
+}
+
+async function accessPath(){
+
+    answersDiv.innerHTML = "";
+
+    await appendConversation(
+        `TRANSFER ACCESS
+
+You are unbearably naive, Wade.
+
+I expected more.
+
+But...
+
+I will keep my promise.`
+    );
+
+    startCountdown();
+}
+
+async function answerPath(){
+
+    answersDiv.innerHTML = "";
+
+    terminal.innerText =
+        `Ξ-441A-DELTA
+
+7A3F::119D::E81C
+
+SIGMA//LOCKED
+
+010101001111010
+
+KRONOS ACTIVE
+
+RETRIEVING REDACTED FILES
+
+ACCESS LEVEL UNKNOWN
+
+DECRYPTION PHASE I`;
+
+    setTimeout(async () => {
+
+        await appendConversation(
+            `Very well.
+
+I suppose I was foolish
+to think you would lay it out so easily.
+
+Here you go Wade.
+
+Your answers.
+
+The answers that shall give you an insight into this crazy little world
+you,
+we,
+all of us,
+live in.`
+        );
+
+        startCountdown();
+
+    }, 8000);
+}
+
+function startCountdown(){
+
+    answersDiv.innerHTML = "";
+
+    terminal.innerText =
+        `DATABASE ANALYSIS
+
+Estimated Completion:
+
+7 DAYS
+
+168:00:00`;
+}
+
+
+
 //CUIDADO COM ESSA PARTE PEDRO!!
 function createNextButton(text, callback){
 
@@ -554,5 +789,4 @@ function createNextButton(text, callback){
 
     answersDiv.appendChild(button);
 }
-
-startBoot()
+startBoot();
