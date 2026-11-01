@@ -3,7 +3,7 @@ alert("ACM3 carregado");
 const terminal = document.getElementById("terminal");
 const answersDiv = document.getElementById("answers");
 
-function typeText(text, speed = 15) {
+function typeText(text, speed = 2) {
     return new Promise((resolve) => {
 
         terminal.innerText = "";
@@ -118,15 +118,14 @@ async function startBoot() {
 
     answersDiv.innerHTML = "";
 
-    await typeText(
+    terminal.innerText =
         `Terminal ACM3.V1
 
-Inicialização de arquivos corrompidos...`
-    );
+Inicialização de arquivos corrompidos...`;
 
-    setTimeout(async () => {
+    setTimeout(() => {
 
-        await typeText(
+        terminal.innerText =
             `Terminal ACM3.V1
 
 Inicialização de arquivos corrompidos...
@@ -136,22 +135,21 @@ Inicialização de arquivos corrompidos...
 [ERRO]
 [OK]
 
-Memória recuperada.`
-        );
+Memória recuperada.`;
 
-    }, 2000);
+    }, 500);
 
     setTimeout(() => {
 
-        randomOrder = shuffle(
-            [...Array(riddles.length).keys()]
-        );
+        randomOrder =
+            shuffle([...Array(riddles.length).keys()]);
 
         currentQuestion = 0;
 
         showQuestion();
 
-    }, 6000);
+    }, 1500);
+
 }
 
 async function showQuestion() {
@@ -163,7 +161,7 @@ async function showQuestion() {
 
     await typeText(
         "> " + riddle.question,
-        8
+        1
     );
 
     riddle.answers.forEach((answer, index) => {
@@ -214,7 +212,7 @@ async function validationError() {
 
     await typeText(
         "ERRO DE VALIDAÇÃO",
-        25
+        2
     );
 
     setTimeout(() => {
@@ -264,7 +262,7 @@ O Ápice.
 E é por isso que escrevo estas linhas com a calma de quem tranca uma porta por dentro: aquilo que se ergue acima de nós não pede licença para descer.
 
 Meu Ápice.`,
-        1
+
     );
 
     const button =
@@ -288,7 +286,7 @@ async function showLastScreen() {
 
     await typeText(
         `Research unconcluded since turn-off (1961).`,
-        15
+
     );
 
     setTimeout(async () => {
@@ -344,7 +342,7 @@ Reboot Successful`,
 
         }, 3000);
 
-    }, 120000);
+    }, 5000);
 
 }
 async function showDialogue1() {
@@ -425,7 +423,7 @@ async function startTransfer() {
 
     let progress = 0;
 
-    const totalTime = 600000; // 10 minutos
+    const totalTime = 30000;
 
     const updates = 100;
 
