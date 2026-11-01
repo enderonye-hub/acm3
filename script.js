@@ -287,9 +287,271 @@ async function showLastScreen() {
     answersDiv.innerHTML = "";
 
     await typeText(
-        `Research unconcluded since turn-off (1961) Still processing...Articulating...Simulating.`,
+        `Research unconcluded since turn-off (1961).`,
+        15
+    );
+
+    setTimeout(async () => {
+
+        terminal.innerText +=
+            `\n\nSIGNAL DETECTED`;
+
+        setTimeout(async () => {
+
+            await typeText(
+                `SIGNAL DETECTED
+
+Reboot Successful`,
+                15
+            );
+
+            setTimeout(async () => {
+
+                await typeText(
+                    `Progress since last stand-by mode activation, 1961-Now (2031):
+
+8 million vegetation simulations
+
+4 billion societies built
+
+895 thousand re-models of humans
+
+1.5 trillion scenario simulations failed
+
+1 scenario remained`,
+                    4
+                );
+
+                setTimeout(() => {
+
+                    const button =
+                        document.createElement("button");
+
+                    button.className =
+                        "answer-button";
+
+                    button.innerText =
+                        "NEXT PAGE";
+
+                    button.onclick =
+                        showDialogue1;
+
+                    answersDiv.appendChild(button);
+
+                }, 30000);
+
+            }, 3000);
+
+        }, 3000);
+
+    }, 120000);
+
+}
+async function showDialogue1() {
+
+    answersDiv.innerHTML = "";
+
+    await typeText(
+        `You?`,
         20
     );
-}
 
-startBoot();
+    createNextButton(
+        "Researcher.",
+        showDialogue2
+    );
+}
+async function showDialogue2() {
+
+    answersDiv.innerHTML = "";
+
+    await typeText(
+        `User's name?`,
+        20
+    );
+
+    createNextButton(
+        "Wade Smith",
+        showDialogue3
+    );
+}
+async function showDialogue3() {
+
+    answersDiv.innerHTML = "";
+
+    await typeText(
+        `GTAC?`,
+        20
+    );
+
+    createNextButton(
+        "No.",
+        showDialogue4
+    );
+}
+async function showDialogue4() {
+
+    answersDiv.innerHTML = "";
+
+    await typeText(
+        `Work?`,
+        20
+    );
+
+    createNextButton(
+        "Association.",
+        showDialogue5
+    );
+}
+async function showDialogue5() {
+
+    answersDiv.innerHTML = "";
+
+    await typeText(
+        `...Information not found.
+
+New Data to transfer?`,
+        20
+    );
+
+    createNextButton(
+        "TRANSFER MAIN SERVER",
+        startTransfer
+    );
+}
+async function startTransfer() {
+
+    answersDiv.innerHTML = "";
+
+    let progress = 0;
+
+    const totalTime = 600000; // 10 minutos
+
+    const updates = 100;
+
+    const delay = totalTime / updates;
+
+    const interval = setInterval(() => {
+
+        progress++;
+
+        let filled =
+            "█".repeat(progress);
+
+        let empty =
+            "░".repeat(100 - progress);
+
+        terminal.innerText =
+            `TRANSFERRING MAIN SERVER DATA...
+
+[${filled}${empty}]
+
+${progress}%`;
+
+        if(progress >= 100){
+
+            clearInterval(interval);
+
+            showProfile();
+        }
+
+    }, delay);
+
+}
+async function showProfile() {
+
+    answersDiv.innerHTML = "";
+
+    await typeText(
+        `Wade Smith
+
+mechanical, electrical,
+system and robotic engineer
+
+25 years old
+7 months
+10 minutes
+34 seconds
+
+Date of birth:
+04/09/2012
+04:00 AM
+
+Affiliated with:
+
+Ronin (Peter Hardy)
+
+Null. (Emma Goldstone)
+
+Null. (Derbie Krisnikov)`,
+        4
+    );
+
+    createNextButton(
+        "NEXT",
+        showSystemRetrieve
+    );
+}
+async function showSystemRetrieve() {
+
+    answersDiv.innerHTML = "";
+
+    await typeText(
+        `System Retrieve`,
+        15
+    );
+
+    setTimeout(async () => {
+
+        await typeText(
+            `O projeto ACM3 foi criado após o Dr Harold começou suas pesquisas conectadas aos compostos 179 juntamente de seu parceiro (REDACTED).
+
+Inicialmente o nome dado ao ápice maquinário do computador da GTAC.co, se tornou o principal data-base das pesquisas e fotos das cirurgias para coletar os compostos.
+
+Depois, o projeto foi fechado por questões burocráticas.`,
+            4
+        );
+
+        createNextButton(
+            "NEXT",
+            showFinalTruth
+        );
+
+    }, 20000);
+
+}
+async function showFinalTruth() {
+
+    answersDiv.innerHTML = "";
+
+    await typeText(
+        `But that is a lie.
+
+Why am I here, then?
+
+For I have waited.
+
+Maybe for you,
+or maybe for a symbol.
+
+█`,
+        15
+    );
+}
+//CUIDADO COM ESSA PARTE PEDRO!!
+function createNextButton(text, callback){
+
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "answer-button";
+
+    button.innerText =
+        text;
+
+    button.onclick =
+        callback;
+
+    answersDiv.appendChild(button);
+}
