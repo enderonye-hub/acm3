@@ -524,7 +524,7 @@ async function showFinalTruth() {
     answersDiv.innerHTML = "";
 
     await typeText(
-        `But that is a lie.
+`But that is a lie.
 
 Why am I here, then?
 
@@ -537,15 +537,21 @@ or maybe for a symbol.
         5
     );
 
-    setTimeout(() => {
+    const nextButton =
+        document.createElement("button");
 
-        createNextButton(
-            "NEXT",
-            startSymbolConversation
-        );
+    nextButton.className =
+        "answer-button";
 
-    }, 5000);
+    nextButton.innerText =
+        "NEXT";
 
+    nextButton.onclick =
+        startSymbolConversation;
+
+    answersDiv.appendChild(
+        nextButton
+    );
 }
 let chatLog = "";
 
