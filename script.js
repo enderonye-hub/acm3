@@ -554,3 +554,6 @@ function createNextButton(text, callback){
 
     answersDiv.appendChild(button);
 }
+
+console.log("FIM DO ARQUIVO");
+startBoot();
