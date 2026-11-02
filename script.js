@@ -766,6 +766,7 @@ const unlockDate =
     new Date(Date.now() + 30000);
 
 function startCountdown(){
+    console.log("START COUNTDOWN FOI CHAMADO")
 
     answersDiv.innerHTML = "";
 
