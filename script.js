@@ -702,8 +702,8 @@ async function accessPath(){
 
     answersDiv.innerHTML = "";
 
-    await appendConversation(
-        `TRANSFER ACCESS
+    terminal.innerText =
+`TRANSFER ACCESS
 
 You are unbearably naive, Wade.
 
@@ -711,10 +711,13 @@ I expected more.
 
 But...
 
-I will keep my promise.`
-    );
+I will keep my promise.`;
 
-    startCountdown();
+    setTimeout(() => {
+
+        startCountdown();
+
+    }, 8000);
 }
 
 async function answerPath(){
@@ -722,102 +725,77 @@ async function answerPath(){
     answersDiv.innerHTML = "";
 
     terminal.innerText =
-        `Ξ-441A-DELTA
-
-7A3F::119D::E81C
-
-SIGMA//LOCKED
-
-010101001111010
-
-KRONOS ACTIVE
-
-RETRIEVING REDACTED FILES
-
-ACCESS LEVEL UNKNOWN
-
-DECRYPTION PHASE I`;
-
-    setTimeout(async () => {
-
-        await appendConversation(
-            `Very well.
+`Very well.
 
 I suppose I was foolish
 to think you would lay it out so easily.
 
-Here you go Wade.
+Here you go, Wade.
 
 Your answers.
 
-The answers that shall give you an insight into this crazy little world
+The answers that shall give you an insight
+into this crazy little world
+
 you,
 we,
 all of us,
-live in.`
-        );
+
+live in.`;
+
+    setTimeout(() => {
 
         startCountdown();
 
-    }, 8000);
+    }, 10000);
 }
 
-const unlockDate =
-    new Date(Date.now() + 30000);
 
 function startCountdown(){
-    console.log("START COUNTDOWN FOI CHAMADO")
+
+    console.log("START COUNTDOWN FOI CHAMADO");
 
     answersDiv.innerHTML = "";
 
-    const interval =
-        setInterval(() => {
+    const interval = setInterval(() => {
 
-            const now =
-                new Date();
+        const now = new Date();
 
-            const diff =
-                unlockDate - now;
+        const diff = unlockDate - now;
 
-            if(diff <= 0){
+        if(diff <= 0){
 
-                console.log("UNLOCK LIBERADO");
+            console.log("UNLOCK LIBERADO");
 
-                clearInterval(interval);
+            clearInterval(interval);
 
-                showTransmissionButton();
+            showTransmissionButton();
 
-                return;
-            }
+            return;
+        }
 
-            const days =
-                Math.floor(
-                    diff /
-                    (1000 * 60 * 60 * 24)
-                );
+        const days =
+            Math.floor(
+                diff / (1000 * 60 * 60 * 24)
+            );
 
-            const hours =
-                Math.floor(
-                    (diff /
-                        (1000 * 60 * 60))
-                    % 24
-                );
+        const hours =
+            Math.floor(
+                (diff / (1000 * 60 * 60)) % 24
+            );
 
-            const minutes =
-                Math.floor(
-                    (diff /
-                        (1000 * 60))
-                    % 60
-                );
+        const minutes =
+            Math.floor(
+                (diff / (1000 * 60)) % 60
+            );
 
-            const seconds =
-                Math.floor(
-                    (diff / 1000)
-                    % 60
-                );
+        const seconds =
+            Math.floor(
+                (diff / 1000) % 60
+            );
 
-            terminal.innerText =
-                `DATABASE ANALYSIS
+        terminal.innerText =
+`DATABASE ANALYSIS
 
 Estimated Completion:
 
@@ -827,33 +805,24 @@ ${String(hours).padStart(2,"0")}:
 ${String(minutes).padStart(2,"0")}:
 ${String(seconds).padStart(2,"0")}`;
 
-        }, 1000);
+    }, 1000);
 }
+function playTransmission(){
 
-function showTransmissionButton(){
+    const audio =
+        new Audio(
+            "audio/transmission01.mp3"
+        );
 
-    answersDiv.innerHTML = "";
+    audio.play();
 
-    terminal.innerText =
-        `DATABASE ANALYSIS COMPLETE
+    terminal.innerText +=
 
-DECRYPTION PACKAGE READY
+`
 
-RECOVERED TRANSMISSION AVAILABLE`;
+TRANSMISSION ACTIVE
 
-    const button =
-        document.createElement("button");
-
-    button.className =
-        "answer-button";
-
-    button.innerText =
-        "PLAY RECOVERED TRANSMISSION";
-
-    button.onclick =
-        playTransmission;
-
-    answersDiv.appendChild(button);
+PLEASE LISTEN CAREFULLY`;
 }
 
 function playTransmission(){
@@ -914,3 +883,7 @@ function createNextButton(text, callback){
     answersDiv.appendChild(button);
 }
 startBoot();
+
+
+const unlockDate =
+    new Date(Date.now() + 10000);
