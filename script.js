@@ -1,5 +1,6 @@
 alert("ACM3 carregado");
-
+const unlockDate =
+    new Date(Date.now() + 10000);
 const terminal = document.getElementById("terminal");
 const answersDiv = document.getElementById("answers");
 
@@ -883,7 +884,3 @@ function createNextButton(text, callback){
     answersDiv.appendChild(button);
 }
 startBoot();
-
-
-const unlockDate =
-    new Date(Date.now() + 10000);
