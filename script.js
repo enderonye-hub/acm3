@@ -762,19 +762,136 @@ live in.`
     }, 8000);
 }
 
+const unlockDate =
+    new Date(Date.now() + 30000);
+
 function startCountdown(){
 
     answersDiv.innerHTML = "";
 
-    terminal.innerText =
-        `DATABASE ANALYSIS
+    const interval =
+        setInterval(() => {
+
+            const now =
+                new Date();
+
+            const diff =
+                unlockDate - now;
+
+            if(diff <= 0){
+
+                console.log("UNLOCK LIBERADO");
+
+                clearInterval(interval);
+
+                showTransmissionButton();
+
+                return;
+            }
+
+            const days =
+                Math.floor(
+                    diff /
+                    (1000 * 60 * 60 * 24)
+                );
+
+            const hours =
+                Math.floor(
+                    (diff /
+                        (1000 * 60 * 60))
+                    % 24
+                );
+
+            const minutes =
+                Math.floor(
+                    (diff /
+                        (1000 * 60))
+                    % 60
+                );
+
+            const seconds =
+                Math.floor(
+                    (diff / 1000)
+                    % 60
+                );
+
+            terminal.innerText =
+                `DATABASE ANALYSIS
 
 Estimated Completion:
 
-7 DAYS
+${days} DAYS
 
-168:00:00`;
+${String(hours).padStart(2,"0")}:
+${String(minutes).padStart(2,"0")}:
+${String(seconds).padStart(2,"0")}`;
+
+        }, 1000);
 }
+
+function showTransmissionButton(){
+
+    answersDiv.innerHTML = "";
+
+    terminal.innerText =
+        `DATABASE ANALYSIS COMPLETE
+
+DECRYPTION PACKAGE READY
+
+RECOVERED TRANSMISSION AVAILABLE`;
+
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "answer-button";
+
+    button.innerText =
+        "PLAY RECOVERED TRANSMISSION";
+
+    button.onclick =
+        playTransmission;
+
+    answersDiv.appendChild(button);
+}
+
+function playTransmission(){
+
+    const audio =
+        new Audio(
+            "audio/transmissionacm3.v1.mp3"
+        );
+
+    audio.play();
+
+    terminal.innerText +=
+
+        `
+
+TRANSMISSION ACTIVE
+
+PLEASE LISTEN CAREFULLY
+`;
+}
+
+//CUIDADO COM ESSA PARTE PEDRO!!
+function createNextButton(text, callback){
+
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "answer-button";
+
+    button.innerText =
+        text;
+
+    button.onclick =
+        callback;
+
+    answersDiv.appendChild(button);
+}
+startBoot();
 
 
 
