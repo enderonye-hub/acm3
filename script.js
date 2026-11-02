@@ -1,4 +1,4 @@
-alert("ACM3 carregado");
+0alert("ACM3 carregado");
 
 const terminal = document.getElementById("terminal");
 const answersDiv = document.getElementById("answers");
@@ -809,6 +809,8 @@ ${String(seconds).padStart(2,"0")}`;
     }, 1000);
 }
 
+console.log("ANTES DA FUNCAO");
+
 function showTransmissionButton(){
 
     answersDiv.innerHTML = "";
@@ -835,7 +837,11 @@ RECOVERED TRANSMISSION AVAILABLE`;
     answersDiv.appendChild(button);
 }
 
+console.log("DEPOIS DA FUNCAO");
+
 function playTransmission(){
+
+console.log("SHOW TRANSMISSION EXISTE");
 
     const audio =
         new Audio(
