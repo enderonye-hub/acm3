@@ -1,8 +1,8 @@
 alert("ACM3 carregado");
-const unlockDate =
-    new Date(Date.now() + 10000);
+
 const terminal = document.getElementById("terminal");
 const answersDiv = document.getElementById("answers");
+const unlockDate = new Date(Date.now() + 10000);
 
 function typeText(text, speed = 2) {
     return new Promise((resolve) => {
