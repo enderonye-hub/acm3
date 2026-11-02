@@ -1,4 +1,4 @@
-0alert("ACM3 carregado");
+alert("ACM3 carregado");
 
 const terminal = document.getElementById("terminal");
 const answersDiv = document.getElementById("answers");
