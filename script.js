@@ -808,22 +808,31 @@ ${String(seconds).padStart(2,"0")}`;
 
     }, 1000);
 }
-function playTransmission(){
 
-    const audio =
-        new Audio(
-            "audio/transmissionacm3.v1.mp3"
-        );
+function showTransmissionButton(){
 
-    audio.play();
+    answersDiv.innerHTML = "";
 
-    terminal.innerText +=
+    terminal.innerText =
+`DATABASE ANALYSIS COMPLETE
 
-`
+DECRYPTION PACKAGE READY
 
-TRANSMISSION ACTIVE
+RECOVERED TRANSMISSION AVAILABLE`;
 
-PLEASE LISTEN CAREFULLY`;
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "answer-button";
+
+    button.innerText =
+        "PLAY RECOVERED TRANSMISSION";
+
+    button.onclick =
+        playTransmission;
+
+    answersDiv.appendChild(button);
 }
 
 function playTransmission(){
@@ -841,8 +850,7 @@ function playTransmission(){
 
 TRANSMISSION ACTIVE
 
-PLEASE LISTEN CAREFULLY
-`;
+PLEASE LISTEN CAREFULLY`;
 }
 
 //CUIDADO COM ESSA PARTE PEDRO!!
